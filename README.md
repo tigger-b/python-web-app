@@ -8,6 +8,15 @@ a frist go
 make
 ```
 
+to use pipenv
+
+```
+make run_with_pipenv
+
+# which in turn used
+python3 -m pipenv install flask
+```
+
 or if you need to install flask
 
 ```
