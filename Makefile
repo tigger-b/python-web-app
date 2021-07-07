@@ -1,2 +1,2 @@
 run:
-	python3 -m flask run
+	FLASK_DEBUG=1 python3 -m flask run
