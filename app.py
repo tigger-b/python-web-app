@@ -1,14 +1,21 @@
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
+    weapon = request.args.get("weapon")
+    if weapon is None:
+        weapon = ""
     return """
 <style>
 h1 {
   font-family: monospace;
   color: #33b343;
+}
+.choice {
+  font-family: monospace;
 }
 </style>
 <h1>Rock Paper Scissors</h1>
@@ -19,6 +26,6 @@ h1 {
 <input type="submit" value="paper" name="weapon">
 <input type="submit" value="scissors" name="weapon">
 </form>
-<pre>
-</pre>
-"""
+
+You decided to play
+<span class="choice">""" + weapon + """</span>"""
