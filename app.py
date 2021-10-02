@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+import random
 
 app = Flask(__name__)
 
@@ -8,7 +9,39 @@ def index():
     weapon = request.args.get("weapon")
     if weapon is None:
         weapon = ""
+    computer = random.randint(1,3)
+    if computer == 1:
+        computer = 'rock'
+    elif computer == 2:
+        computer = 'paper'
+    else:
+        computer = 'scissors'
+
+    if weapon == computer:
+        result ='tie,you both select same'
+    elif weapon == 'rock' and computer == 'paper':
+        result ='you loose, computer selected paper'
+    elif weapon == 'rock' and computer == 'scissors':
+        result ='you win, computer selected scissors'
+    elif weapon == 'paper' and computer == 'scissors':
+        result ='you loose, computer selected scissors'
+    elif weapon == 'paper' and computer == 'rock':
+        result ='you win, computer selected rock'
+    elif weapon == 'scissors' and computer == 'rock':
+        result ='you loose,computer selected rock'
+    elif weapon == 'scissors' and computer == 'paper':
+        result ='you win, computer selected paper'
+    else:
+        result ='invalid: choose any one -- rock, paper, scissors'
+    
+
+
+    
     return """
+
+
+
+    
 <style>
 h1 {
   font-family: monospace;
@@ -97,4 +130,9 @@ input{
 </form>
 
 You decided to play
-<span class="choice">""" + weapon + """</span>"""
+<span class="choice">""" + weapon + """</span><br>
+computer decided to play
+<span class="choice">""" + computer + """</span><br>
+<span class="choice">""" + result + """</span>"""
+
+

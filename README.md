@@ -4,6 +4,9 @@ a frist go
 
 ## to get running
 
+
+DO this and dont read any futher!!!
+
 ```
 make
 ```
